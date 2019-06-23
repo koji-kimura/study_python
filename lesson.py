@@ -1,7 +1,11 @@
-import math
-result = math.sqrt(25)
-print(result)
-log2 = math.log2(10)
-print(log2)
-
-print(help(math))
+print('hello')
+print('hello')
+print('hello. \nHow re you?')
+print(r'\name')
+print("""\
+line1
+line2
+line3\
+""")
+print('hello'*3)
+print('he''llo')
