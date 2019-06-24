@@ -1,19 +1,14 @@
-r = [1,2,3,4,5,1,2,3]
+i = [1,2,3,4,5]
+# 参照渡しになってしまう
+j = i
+i[0] = 100
+print(i)
+print(j)
 
-print(r.index(3))
-print(r.index(3,3))
-print(r.count(3))
-
-if 5 in r:
-  print('exist')
-
-r.sort()
-
-print(r)
-
-s = 'My name is Mike'
-to_split = s.split(' ')
-print(to_split)
-# .joinは文字列を繋げる
-x = ' '.join(to_split)
+x = [1,2,3,4,5]
+y = x.copy()
+x[0] =100
 print(x)
+print(y)
+print(id(x))
+print(id(y))
