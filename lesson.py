@@ -1,32 +1,19 @@
-print('hello')
-print('hello')
-print('hello. \nHow re you?')
-print(r'\name')
-print("""\
-line1
-line2
-line3\
-""")
-print('hello'*3)
-print('he''llo')
+r = [1,2,3,4,5,1,2,3]
 
-word = 'python'
+print(r.index(3))
+print(r.index(3,3))
+print(r.count(3))
 
-word = 'j'+ word[1:]
-print(word)
-print(len(word))
+if 5 in r:
+  print('exist')
 
-s = 'My name is Mike. Hi Mike.'
-print(s)
+r.sort()
 
-is_start = s.startswith('My')
-print(is_start)
+print(r)
 
-print(s.find('Mike'))
-print(s.rfind('Mike'))
-print(s.count('Mike'))
-print(s.capitalize())
-print(s.title())
-print(s.upper())
-print(s.lower())
-print(s.replace('Mike','Nancy'))
+s = 'My name is Mike'
+to_split = s.split(' ')
+print(to_split)
+# .joinは文字列を繋げる
+x = ' '.join(to_split)
+print(x)
