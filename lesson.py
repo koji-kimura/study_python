@@ -1,36 +1,30 @@
-# タプルについて
-# ()で囲ってあげる、省略もできる、タプルは,をつける
-t = (1,2,3,4,1,2)
-print(t)
-print(type(t))
-print(t.count(1))
+# 辞書型
+d = {'x':10,'y':20}
 
-num_tuple = (10,20)
-print(num_tuple)
-x,y = num_tuple
-print(x,y)
+print(type(d))
 
-# 入れ替えも簡単にできる
-i = 10
-j = 20
-print(i,j)
-tmp = i
-i = j
-j = tmp
-print(i,j)
+d['z'] = 30
 
-a = 100
-b = 200
-print(a,b)
-a,b = b,a
-print(a,b)
+print(d)
 
-## ならどうやって使うのか？
-## tuppleは配列とは異なり、appendできないのでその性質を利用する
-chose_from_two = ('A','B','C')
-answer = []
-answer.append('A')
-answer.append('C')
+# メソッド
+print(d.keys())
+print(d.values())
 
-print(chose_from_two)
-print(answer)
+d2 = {'x':1000, 'j':500}
+
+d.update(d2)
+print(d)
+print(d.get('x'))
+x = d.pop('x')
+print(x)
+print(d)
+
+d.clear()
+
+d = {'a':1, 'b':2}
+
+# inであるかどうかを確かめられる
+has_a = 'a' in d
+
+print(has_a)
