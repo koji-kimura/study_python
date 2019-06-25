@@ -1,30 +1,23 @@
-# 辞書型
-d = {'x':10,'y':20}
-
-print(type(d))
-
-d['z'] = 30
-
-print(d)
-
-# メソッド
-print(d.keys())
-print(d.values())
-
-d2 = {'x':1000, 'j':500}
-
-d.update(d2)
-print(d)
-print(d.get('x'))
-x = d.pop('x')
+# dictでも参照渡しになってしまう
+x = {'a':1}
+y = x
+y['a'] = 1000
 print(x)
-print(d)
+print(y)
 
-d.clear()
+x = {'a':1}
+y = x.copy()
+y['a'] = 1000
+print(x)
+print(y)
 
-d = {'a':1, 'b':2}
+# どういうタイミングで使うのか？
+# listでもデータ持てるけれど、keyでさっと取ってこれない
+# dictの方が早い
+fruits = {
+  'apple':100,
+  'banana':200,
+  'orange':300
+}
 
-# inであるかどうかを確かめられる
-has_a = 'a' in d
-
-print(has_a)
+print('apple %d'%fruits['apple'])
