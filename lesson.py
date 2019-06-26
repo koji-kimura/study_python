@@ -1,8 +1,12 @@
-is_empty = None
-# print(help(is_empty))
-
-if is_empty is not None:
-  print('None!')
-
-print(1 == True)
-print(1 is True)
+count = 0
+# while count < 5:
+#   print(count)
+#   count += 1
+while True:
+    if count >= 5:
+        break
+    if count == 2:
+        count += 1
+        continue
+    print(count)
+    count += 1
