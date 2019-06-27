@@ -1,30 +1,11 @@
-# # よくない例
-# def test_func(x, l=[]):
-#     l.append(x)
-#     return l
-
-# リストとか、辞書はデフォルト引数をつけないのが通例
-# この関数みたいにNoneで設定する
+# 引数の頭に*を入れることで引数をタプル化できる
+def say_something(word, *args):
+    print('word=', word)
+    for arg in args:
+        print(arg)
 
 
-def test_func(x, l=None):
-    if l is None:
-        l = []
-    l.append(x)
-    return l
+say_something('hi', 'Mike', 'Nance')
 
-# y = [1, 2, 3]
-# r = test_func(100, y)
-# print(r)
-
-
-# y = [1, 2, 3]
-# r = test_func(200, y)
-# print(r)
-
-r = test_func(100)
-print(r)
-
-# [100]のみではなく[100,100]になる。これは参照しているから
-r = test_func(100)
-print(r)
+# t = ('Mike', 'Nancy')
+# say_something('hi', *t)
