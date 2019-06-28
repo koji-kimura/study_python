@@ -1,36 +1,17 @@
-def print_info(func):
-    def wrapper(*args, **kwargs):
-        print('start')
-        result = func(*args, **kwargs)
-        print('end')
-        return result
-    return wrapper
+# このリストの頭文字を大文字にするためのプログラミング
+l = ['Mon', 'tus', 'Wed', 'Thu', 'fri', 'sat', 'Sun']
 
 
-def print_more(func):
-    def wrapper(*args, **kwargs):
-        print('func:', func.__name__)
-        print('args:', args)
-        print('kwargs:', kwargs)
-        result = func(*args, **kwargs)
-        print('result:', result)
-        return result
-    return wrapper
+def change_words(words, func):
+    for word in words:
+        print(func(word))
 
 
-@print_info
-@print_more
-def add_num(a, b):
-    return a + b
+# def sample_func(word):
+#     return word.capitalize()
+
+# ラムダは簡単に関数を定義できる
+sample_func(word): lambda word: word.capitalize()
 
 
-r = add_num(10, 20)
-print(r)
-# f = print_info(add_num)
-# r = f(10, 20)
-# print(r)
-
-# print('start')
-# r = add_num(10, 20)
-# print('start')
-# print(r)
+change_words(l, sample_func)
