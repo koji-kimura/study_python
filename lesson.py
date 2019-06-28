@@ -1,17 +1,36 @@
-# このリストの頭文字を大文字にするためのプログラミング
-l = ['Mon', 'tus', 'Wed', 'Thu', 'fri', 'sat', 'Sun']
+# l = ['Good morning', 'Good afternoon', 'Good night']
+
+# for i in l:
+#     print(i)
 
 
-def change_words(words, func):
-    for word in words:
-        print(func(word))
+def counter(num=10):
+    for _ in range(num):
+      # ジェネレーターにreturnはない
+        yield 'run'
 
 
-# def sample_func(word):
-#     return word.capitalize()
-
-# ラムダは簡単に関数を定義できる
-sample_func(word): lambda word: word.capitalize()
+print("##############")
 
 
-change_words(l, sample_func)
+def greeting():
+    #  要素を発生させていく
+    yield 'good morning'
+    yield 'good afternoon'
+    yield 'good night'
+
+
+# for g in greeting():
+#     print(g)
+
+g = greeting()
+c = counter()
+print(next(g))
+print(next(c))
+print(next(g))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(g))
