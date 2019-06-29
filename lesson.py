@@ -1,12 +1,8 @@
-w = ['mon', 'tue', 'wed']
-f = ['coffee', 'milk', 'water']
+s = set()
 
-d = {}
+for i in range(10):
+    s.add(i)
+print(s)
 
-for x, y in zip(w, f):
-    d[x] = y
-
-print(d)
-
-d = {x: y for x, y in zip(w, f)}
-print(d)
+s = {i for i in range(10)}
+print(s)
