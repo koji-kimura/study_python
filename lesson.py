@@ -1,36 +1,23 @@
-# l = ['Good morning', 'Good afternoon', 'Good night']
+t = (1, 2, 3, 4, 5)
+t2 = (5, 6, 7, 8, 9)
 
-# for i in l:
-#     print(i)
+r = []
 
+for i in t:
+    r.append(i)
 
-def counter(num=10):
-    for _ in range(num):
-      # ジェネレーターにreturnはない
-        yield 'run'
+print(r)
 
+r = [i for i in t if i % 2 == 0]
+print(r)
 
-print("##############")
+r = []
+for i in t:
+    for j in t2:
+        r.append(i*j)
 
+print(r)
 
-def greeting():
-    #  要素を発生させていく
-    yield 'good morning'
-    yield 'good afternoon'
-    yield 'good night'
+r = [i*j for i in t for j in t2]
 
-
-# for g in greeting():
-#     print(g)
-
-g = greeting()
-c = counter()
-print(next(g))
-print(next(c))
-print(next(g))
-print(next(c))
-print(next(c))
-print(next(c))
-print(next(c))
-print(next(c))
-print(next(g))
+print(r)
