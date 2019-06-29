@@ -1,17 +1,15 @@
-l = [1, 2, 3]
-del l
+class UppercaseError(Exception):
+    pass
 
-i = 5
+
+def check():
+    words = ['APPLE', 'Orange', 'banana']
+    for word in words:
+        if word.isupper():
+            raise UppercaseError(word)
+
 
 try:
-    l[i]
-except IndexError as exc:
-    print("IndexError: Don't worry: {}".format(exc))
-except NameError as exc:
-    print("NameError: Don't worry: {}".format(exc))
-except Exception as exc:
-    print("other:{}".fotmat(exc))
-else:
-    print('done')
-finally:
-    print("clean up")
+    check()
+except UppercaseError as exc:
+    print('This is my fault. Go next')
