@@ -1,18 +1,17 @@
-"""
-test test#############
-"""
+l = [1, 2, 3]
+del l
 
-animal = 'cat'
+i = 5
 
-
-def f():
-    # global animal
-    # print(animal)
-    animal = 'dog'
-    print('local:', locals())
-
-
-f()
-print('global:', globals())
-# print(animal)
-print(__name__)
+try:
+    l[i]
+except IndexError as exc:
+    print("IndexError: Don't worry: {}".format(exc))
+except NameError as exc:
+    print("NameError: Don't worry: {}".format(exc))
+except Exception as exc:
+    print("other:{}".fotmat(exc))
+else:
+    print('done')
+finally:
+    print("clean up")
