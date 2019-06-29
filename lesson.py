@@ -1,15 +1,3 @@
-class UppercaseError(Exception):
-    pass
+import sys
 
-
-def check():
-    words = ['APPLE', 'Orange', 'banana']
-    for word in words:
-        if word.isupper():
-            raise UppercaseError(word)
-
-
-try:
-    check()
-except UppercaseError as exc:
-    print('This is my fault. Go next')
+print(sys.argv)
