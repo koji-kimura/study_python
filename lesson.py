@@ -1,16 +1,18 @@
-def g():
-    for i in range(10):
-        yield i
+"""
+test test#############
+"""
+
+animal = 'cat'
 
 
-g = g()
-# print(type(g))
-# print(next(g))
+def f():
+    # global animal
+    # print(animal)
+    animal = 'dog'
+    print('local:', locals())
 
-g = (i for i in range(10) if i % 2 == 0)
 
-print(next(g))
-print(next(g))
-print(next(g))
-print(next(g))
-print(next(g))
+f()
+print('global:', globals())
+# print(animal)
+print(__name__)
