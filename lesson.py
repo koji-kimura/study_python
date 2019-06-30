@@ -1,17 +1,13 @@
-# import lesson_package.utils
-# from lesson_package.tools import utils
-# from lesson_package.talk import human
-# from lesson_package.talk import animal
-# from lesson_package.talk import *
-# r = lesson_package.utils.say_twice('hello')
-# r = utils.say_twice('hello')
+# print()、next()も組み込み関数
+print(globals())
 
-try:
-    from lesson_package import *
-except ImportError:
-    from lesson_package.talk import *
+ranking = {
+    'A': 100,
+    'B': 85,
+    'C': 95,
+}
+# 配列.get(key)で値をとる
+print(ranking.get('A'))
 
-print(animal.sing())
-print(animal.cry())
-
-# print(human.sing())
+# getで取ってきた値をキーにしてソートをかける
+print(sorted(ranking, key=ranking.get, reverse=True))
