@@ -1,6 +1,5 @@
-#  pipでpypiにあるサードパーティーのライブラリをインストールできる
-# インストールはpip install
-from termcolor import colored
+import lesson_package.talk.animal
 
-print(colored('test', 'green'))
-print(help(colored))
+import config
+
+print(__name__)
