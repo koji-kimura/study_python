@@ -1,5 +1,6 @@
 # class Person(object):のobjectは省略できる
 class Person(object):
+    # コンストラクタ
     def __init__(self, name):
         self.name = name
         # print('First', name)
@@ -14,6 +15,12 @@ class Person(object):
     def run(self, num):
         print('run' * num)
 
+    # デストラクタ
+    def __del__(self):
+        print('good bye')
+
 
 person = Person('mike')
 person.say_somethig()
+# 明示的に呼びたい場合
+del person
