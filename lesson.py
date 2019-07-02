@@ -1,5 +1,8 @@
-import lesson_package.talk.animal
+# class Person(object):のobjectは省略できる
+class Person(object):
+    def say_somethig(self):
+        print('hello')
 
-import config
 
-print(__name__)
+person = Person()
+person.say_somethig()
