@@ -1,12 +1,15 @@
-class Person(object):
+# この記述で抽象クラスにできる
+import abc
+
+
+class Person(metaclass=abc.ABCMeta):
     def __init__(self, age=1):
         self.age = age
 
+    # この記述で継承クラスにdriveメソッドを強要できる
+    @abc.abstractmethod
     def drive(self):
-        if self.age >= 18:
-            print('ok')
-        else:
-            raise Exception('No drive')
+        pass
 
 
 class Baby(Person):
@@ -16,6 +19,9 @@ class Baby(Person):
         else:
             raise ValueError
 
+    def drive(self):
+        raise Exception('No drive')
+
 
 class Adult(Person):
     def __init__(self, age=18):
@@ -24,9 +30,15 @@ class Adult(Person):
         else:
             raise ValueError
 
+    def drive(self):
+        print('ok')
+
 
 baby = Baby()
 adult = Adult()
+
+# baby.drive()
+adult.drive()
 
 
 class Car(object):
@@ -38,11 +50,6 @@ class Car(object):
 
     def ride(self, person):
         person.drive()
-
-
-car = Car()
-# car.ride(baby)
-car.ride(adult)
 
 
 class ToyotaCar(Car):
