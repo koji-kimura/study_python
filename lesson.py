@@ -1,24 +1,33 @@
 class Person(object):
-    def talk(self):
-        print('talk')
+    kind = 'human'
 
-    def run(self):
-        print('person run')
+    def __init__(self, name):
+        # クラス変数は作ったオブジェクトの中で共有される
+        self.name = name
 
-
-class Car(object):
-    def run(self):
-        print('run')
-
-# 左手に買いたものが優先される
+    def who_are_you(self):
+        print(self.name, self.kind)
 
 
-class PersonCarRobot(Person, Car):
-    def fly(self):
-        print('fly')
+a = Person('A')
+a.who_are_you()
+b = Person('B')
+b.who_are_you()
 
 
-porson_car_robot = PersonCarRobot()
-porson_car_robot.talk()
-porson_car_robot.run()
-porson_car_robot.fly()
+class T(object):
+    words = []
+
+    def add_word(self, word):
+        self.words.append(word)
+
+
+c = T()
+c.add_word('add 1')
+c.add_word('add 2')
+print(c.words)
+
+d = T()
+d.add_word('add 3')
+d.add_word('add 4')
+print(d.words)
