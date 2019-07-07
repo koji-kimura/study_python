@@ -1,33 +1,23 @@
 class Person(object):
     kind = 'human'
 
-    def __init__(self, name):
-        # クラス変数は作ったオブジェクトの中で共有される
-        self.name = name
+    def __init__(self):
+        self.x = 100
 
-    def who_are_you(self):
-        print(self.name, self.kind)
+    @classmethod
+    def what_is_your_kind(cls):
+        return cls.kind
 
-
-a = Person('A')
-a.who_are_you()
-b = Person('B')
-b.who_are_you()
+    @staticmethod
+    def about(year):
+        print('about human {}'.format(year))
 
 
-class T(object):
-    words = []
+a = Person()
+print(a.x)
+print(a.what_is_your_kind())
+b = Person
+print(b)
+print(b.what_is_your_kind())
 
-    def add_word(self, word):
-        self.words.append(word)
-
-
-c = T()
-c.add_word('add 1')
-c.add_word('add 2')
-print(c.words)
-
-d = T()
-d.add_word('add 3')
-d.add_word('add 4')
-print(d.words)
+Person.about(1999)
