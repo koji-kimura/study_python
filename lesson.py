@@ -8,18 +8,8 @@ DDD
 # with open('test.txt', 'w') as f:
 #     f.write(s)
 
-with open('test.txt', 'r') as f:
-    # print(f.read())
-    # while True:
-    #     # line = f.readline()
-    #     chunk = 2
-    #     line = f.read(chunk)
-    #     print(line)
-    #     if not line:
-    #         break
-    print(f.tell())
-    print(f.read(1))
-    f.seek(5)
-    print(f.read(1))
-    f.seek(14)
-    print(f.read(1))
+with open('test.txt', 'r+') as f:
+    f.write(s)
+    # 書き込んでしまったので最後に戻ってしまっている
+    f.seek(0)
+    print(f.read())
