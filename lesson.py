@@ -1,15 +1,14 @@
+import string
+
 s = """\
-AAA
-BBB
-CCC
-DDD
+Hi $name
+
+$contents
+
+Have a good day
+
 """
 
-# with open('test.txt', 'w') as f:
-#     f.write(s)
-
-with open('test.txt', 'r+') as f:
-    f.write(s)
-    # 書き込んでしまったので最後に戻ってしまっている
-    f.seek(0)
-    print(f.read())
+t = string.Template(s)
+contents = t.substitute(name='Mike', contents='How are you?')
+print(contents)
