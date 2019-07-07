@@ -1,23 +1,22 @@
-class Person(object):
-    kind = 'human'
+class Word(object):
+    # __があるものが特殊メソッド
+    def __init__(self, text):
+        self.text = text
 
-    def __init__(self):
-        self.x = 100
+    def __str__(self):
+        return 'word!!!'
 
-    @classmethod
-    def what_is_your_kind(cls):
-        return cls.kind
+    def __len__(self):
+        return len(self.text)
 
-    @staticmethod
-    def about(year):
-        print('about human {}'.format(year))
+    def __add__(self, word):
+        return self.text.lower() + word.text.lower()
+
+    def __eq__(self, word):
+        return self.text.lower() == word.text.lower()
 
 
-a = Person()
-print(a.x)
-print(a.what_is_your_kind())
-b = Person
-print(b)
-print(b.what_is_your_kind())
+w = Word('test')
+w2 = Word('####')
 
-Person.about(1999)
+print(w == w2)
