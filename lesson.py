@@ -1,5 +1,3 @@
 # f = open('test.txt', 'w')
-f = open('test.txt', 'a')
-# flie = fを入れないと普通にコンソールに吐き出されるだけ
-print('\n print', file=f)
-f.close()
+with open('test.txt', 'w') as f:
+    print('\n print', file=f)
