@@ -1,19 +1,13 @@
-# 　使い終わった後に勝手に消してくれるファイルを作成してくれる
-import tempfile
+import subprocess
+# ターミナルで実行したのと同じ結果が出てくる
+# subprocess.run(['ls', '-al'])
+# shell = Trueはセキュリティ的に実行しないほうがいい
+# subprocess.run('ls -al | grep test', shell=True, check=True)
 
-with tempfile.TemporaryFile(mode='w+') as t:
-    t.write('hello')
-    t.seek(0)
-    print(t.read())
-
-with tempfile.NamedTemporaryFile(delete=False) as t:
-    with open(t.name, 'w+') as f:
-        f.write('test\n')
-        f.seek(0)
-        print(f.read())
-
-with tempfile.TemporaryDirectory() as td:
-    print(td)
-
-temp_dir = tempfile.mkdtemp()
-print(temp_dir)
+p1 = subprocess.Popen(['ls', '-al'], stdout=subprocess.PIPE)
+p2 = subprocess.Popen(
+    ['grep', 'test'], stdin=p1.stdout, stdout=subprocess.PIPE
+)
+p1.stdout.close()
+output = p2.communicate()[0]
+print(output)
