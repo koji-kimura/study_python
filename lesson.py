@@ -1,13 +1,19 @@
-import glob
-import zipfile
+# 　使い終わった後に勝手に消してくれるファイルを作成してくれる
+import tempfile
 
-# with zipfile.ZipFile('test.zip', 'w') as z:
-# z.write('test_dir')
-# z.write('test_dir/test.txt')
-# for f in glob.glob('test_dir/**', recursive=True):
-#     print(f)
-#     z.write(f)
-with zipfile.ZipFile('test.zip', 'r') as z:
-    # z.extractall('ZZZ2')
-    with z.open('test_dir/test.txt') as f:
+with tempfile.TemporaryFile(mode='w+') as t:
+    t.write('hello')
+    t.seek(0)
+    print(t.read())
+
+with tempfile.NamedTemporaryFile(delete=False) as t:
+    with open(t.name, 'w+') as f:
+        f.write('test\n')
+        f.seek(0)
         print(f.read())
+
+with tempfile.TemporaryDirectory() as td:
+    print(td)
+
+temp_dir = tempfile.mkdtemp()
+print(temp_dir)
