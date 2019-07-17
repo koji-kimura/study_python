@@ -1,0 +1,7 @@
+CRITICAL:root:critical
+ERROR:root:error
+DEBUG:root:debug
+INFO:root:info
+DEBUG:root:debug
+INFO:root:infotest
+INFO:root:info test1 test2
