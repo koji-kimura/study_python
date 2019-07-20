@@ -1,4 +1,5 @@
 import logging
+import logtest
 
 # formatter = '%(levelname)s:%(message)s'
 formatter = '%(asctime)s:%(message)s'
@@ -7,4 +8,4 @@ logging.info('info')
 logger = logging.getLogger(__name__)
 logger.info('from main')
 # logger.setLevel(logging.DEBUG)
-logger.debug('debug')
+logtest.do_something()
