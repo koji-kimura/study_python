@@ -1,12 +1,10 @@
 import logging
 
-logging.basicConfig(filename="test.log", level=logging.DEBUG)
-
-logging.critical('critical')
-logging.error('error')
-logging.debug('debug')
+# formatter = '%(levelname)s:%(message)s'
+formatter = '%(asctime)s:%(message)s'
+logging.basicConfig(level=logging.INFO)
 logging.info('info')
-logging.debug('debug')
-
-logging.info('info{}'.format('test'))
-logging.info('info %s %s', 'test1', 'test2')
+logger = logging.getLogger(__name__)
+logger.info('from main')
+# logger.setLevel(logging.DEBUG)
+logger.debug('debug')
