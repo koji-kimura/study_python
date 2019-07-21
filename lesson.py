@@ -1,23 +1,9 @@
-import logging
-import logtest
+import loggin.config
 
-# formatter = '%(levelname)s:%(message)s'
-formatter = '%(asctime)s:%(message)s'
-logging.basicConfig(level=logging.INFO)
-
-
-class NoPassFilter(logging.Filter):
-    def filter(self, record):
-        log_message = record.getMessage()
-        return 'password' not in log_message
-
-
-logging.info('info')
+logging.config.fileConfig('logging.oini')
 logger = logging.getLogger(__name__)
-logger.addFilter(NoPassFilter())
 
-logger.info('from main')
-logger.info('from main password="test"')
-logger.info('from main passwod="test"')
-# logger.setLevel(logging.DEBUG)
-# logtest.do_something()
+logger.debug('debug message')
+logger.info('info message')
+logger.warning('warn message')
+logger.critival('critival message')
