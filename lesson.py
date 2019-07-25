@@ -1,24 +1,46 @@
-from email import message
-import smtplib
+import sqlite3
 
-smtp_host = 'smtp.live.com'
-smtp_port = 587
-# 捨てアカウント
-to_email = 'npug310ghhqp@sute.jp'
-from_email = 'npug310ghhqp@sute.jp'
-username = 'test'
-password = 'test'
+# conn = sqlite3.connect('test_sqlite.db')
+# 何度も使いたいときにこちらを記述
+conn = sqlite3.connect(':memory:')
 
-msg = message.EmailMessage()
-msg.set_content('test email')
-msg['Subject'] = 'test email sub'
-msg['From'] = from_email
-msg['To'] = to_email
+curs = conn.cursor()
+# テーブルを作る
+curs.execute(
+    'CREATE TABLE persons(id INTEGER PRIMARY KEY AUTOINCREMENT,name STRING)'
+)
+conn.commit()
 
-server = smtplib.SMTP(smtp_host, smtp_port)
-server.ehlo()
-server.starttls()
-server.ehlo()
-server.login(username, password)
-server.send.message(msg)
-server.quit()
+データを入れる
+curs.execute(
+    'INSERT INTO persons(name) values("Mike")'
+)
+conn.commit()
+curs.execute(
+    'SELECT * from persons'
+)
+print(curs.fetchall())
+
+curs.execute(
+    'INSERT INTO persons(name) values("Nancy")'
+)
+conn.commit()
+
+curs.execute(
+    'INSERT INTO persons(name) values("Jun")'
+)
+conn.commit()
+curs.execute(
+    'UPDATE persons set name ="Michel" WHERE name="Mike"'
+)
+
+curs.execute('DELETE FROM persons WHERE name="Michel"')
+conn.commit()
+
+curs.execute(
+    'SELECT * from persons'
+)
+print(curs.fetchall())
+
+
+conn.close()
