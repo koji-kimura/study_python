@@ -1,46 +1,36 @@
-import sqlite3
+import sqlalchemy
+import sqlalchemy.ext.declarative
+import sqlalchemy.orm
 
-# conn = sqlite3.connect('test_sqlite.db')
-# 何度も使いたいときにこちらを記述
-conn = sqlite3.connect(':memory:')
+engine = sqlalchemy.create_engine('sqlite:///test_sqlite2', echo=True)
 
-curs = conn.cursor()
-# テーブルを作る
-curs.execute(
-    'CREATE TABLE persons(id INTEGER PRIMARY KEY AUTOINCREMENT,name STRING)'
-)
-conn.commit()
-
-データを入れる
-curs.execute(
-    'INSERT INTO persons(name) values("Mike")'
-)
-conn.commit()
-curs.execute(
-    'SELECT * from persons'
-)
-print(curs.fetchall())
-
-curs.execute(
-    'INSERT INTO persons(name) values("Nancy")'
-)
-conn.commit()
-
-curs.execute(
-    'INSERT INTO persons(name) values("Jun")'
-)
-conn.commit()
-curs.execute(
-    'UPDATE persons set name ="Michel" WHERE name="Mike"'
-)
-
-curs.execute('DELETE FROM persons WHERE name="Michel"')
-conn.commit()
-
-curs.execute(
-    'SELECT * from persons'
-)
-print(curs.fetchall())
+Base = sqlalchemy.ext.declarative.declarative_base()
 
 
-conn.close()
+class Person(Base):
+    __tablename__ = 'persons'
+    id = sqlalchemy.Column(
+        sqlalchemy.Integer, primary_key=True, autoincrement=True)
+    name = sqlalchemy.Column(sqlalchemy.String(14))
+
+
+Base.metadata.create_all(engine)
+Session = sqlalchemy.orm.sessionmaker(bind=engine)
+session = Session()
+
+p1 = Person(name='Mike')
+p2 = Person(name='Nancy')
+p3 = Person(name='Jun')
+session.add(p1)
+session.add(p2)
+session.add(p3)
+session.commit()
+
+p4 = session.query(Person).filter_by(name='Mike').first()
+p4.name = 'Micel'
+session.query(Person)
+session.add(p4)
+session.commit()
+persons = session.query(Person).all()
+for person in persons:
+    print(person.id, person.name)
