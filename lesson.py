@@ -1,8 +1,25 @@
-import dbm
+import pickle
 
-with dbm.open('cache', 'c') as db:
-    db['key1'] = 'value1'
-    db['key2'] = 'value2'
 
-with dbm.open('cache', 'r') as db:
-    print(db.get('key1'))
+class T(object):
+    def __init__(self, name):
+        self.name = name
+
+
+data = {
+    'a': [1, 2, 3],
+    'b': {'test', 'test'},
+    'c': {'key': 'value'},
+    'd': T('test')
+}
+
+with open('data.pickle', 'wb') as f:
+    pickle.dump(data, f)
+
+with open('data.pickle', 'rb') as f:
+    data_loaded = pickle.load(f)
+    print(data_loaded['d'].name)
+    print(type(data_loaded['a']))
+    print(type(data_loaded['b']))
+    print(type(data_loaded['c']))
+    print(type(data_loaded['d']))
