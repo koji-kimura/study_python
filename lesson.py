@@ -1,25 +1,26 @@
-import pickle
+import xml.etree.ElementTree as ET
+root = ET.Element('root')
+tree = ET.ElementTree(element=root)
 
+employee = ET.SubElement(root, 'employee')
+employ = ET.SubElement(employee, 'employ')
+employ_id = ET.SubElement(employ, 'id')
+employ_id.text = '111'
+employ_id = ET.SubElement(employ, 'name')
+employ_id.text = 'Mike'
 
-class T(object):
-    def __init__(self, name):
-        self.name = name
+employ = ET.SubElement(employee, 'employ')
+employ_id = ET.SubElement(employ, 'id')
+employ_id.text = '222'
+employ_id = ET.SubElement(employ, 'name')
+employ_id.text = 'Nancy'
 
+tree.write('test.xml', encoding="utf-8", xml_declaration=True)
 
-data = {
-    'a': [1, 2, 3],
-    'b': {'test', 'test'},
-    'c': {'key': 'value'},
-    'd': T('test')
-}
+tree = ET.ElementTree(file='test.xml')
+root = tree.getroot()
 
-with open('data.pickle', 'wb') as f:
-    pickle.dump(data, f)
-
-with open('data.pickle', 'rb') as f:
-    data_loaded = pickle.load(f)
-    print(data_loaded['d'].name)
-    print(type(data_loaded['a']))
-    print(type(data_loaded['b']))
-    print(type(data_loaded['c']))
-    print(type(data_loaded['d']))
+for employee in root:
+    for employ in employee:
+        for person in employ:
+            print(person.tag, person.text)
